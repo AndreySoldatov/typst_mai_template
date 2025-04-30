@@ -11,6 +11,10 @@
   doc,
 ) = {
   set math.equation(numbering: "(1)")
+  set figure(
+    supplement: "",
+    numbering: "Рис. 1)",
+  )
   show raw: set text(size: 8pt)
 
   grid(
@@ -48,11 +52,11 @@
   align(right)[
     #for student in students [
       #if student.is_fem == true [
-        Выполнила:
+        Выполнила: студентка
       ] else [
-        Выполнил:
+        Выполнил: студент
       ]
-      студент группы #group #student.name
+      группы #group #student.name
       #v(10pt)
       #line(length: 10%, stroke: 0.5pt)
     ]
@@ -72,4 +76,20 @@
   set page(numbering: "1")
 
   doc
+}
+
+#let code(
+  str,
+  lang,
+) = {
+  block(
+    stroke: 0.5pt + gray,
+    fill: luma(250),
+    inset: 8pt,
+    radius: 3pt,
+    raw(
+      str,
+      lang: lang,
+    ),
+  )
 }
