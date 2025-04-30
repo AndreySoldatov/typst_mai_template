@@ -4,8 +4,7 @@
   work_number: [],
   work_name: [],
   group: [],
-  student_name: [],
-  is_fem_stud: false,
+  students: (),
   teach_name: [],
   is_fem_teach: false,
   year: [],
@@ -47,14 +46,16 @@
   v(20%)
 
   align(right)[
-    #if is_fem_stud == true [
-      Выполнила:
-    ] else [
-      Выполнил:
+    #for student in students [
+      #if student.is_fem == true [
+        Выполнила:
+      ] else [
+        Выполнил:
+      ]
+      студент группы #group #student.name
+      #v(10pt)
+      #line(length: 10%, stroke: 0.5pt)
     ]
-    студент группы #group #student_name
-    #v(10pt)
-    #line(length: 10%, stroke: 0.5pt) \
 
     #if is_fem_teach == true [
       Проверила:
@@ -66,9 +67,7 @@
     #line(length: 10%, stroke: 0.5pt) \
   ]
 
-  v(10%)
-
-  align(center)[Москва #year]
+  align(center + bottom)[Москва #year]
 
   set page(numbering: "1")
 
